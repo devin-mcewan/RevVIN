@@ -1,0 +1,73 @@
+Summary: I am going to make a website that 
+1: Prompts the user for a VIN
+2: Makes a request to a Vehicle Information Database API using the provided VIN
+3: Receives a response with Vehicle Information. 
+4: Stores the response information in a localized object 
+   - Bonus if you can save this item to State using context so that you can: 
+    1: Store all of the relevant vehicle information after it is received so  
+       you don't have to make another request page-to-page with changing information. 
+    2: Reset state so that when a new vin is provided, the previous vehicle's information
+       would be cleared, making room for the new vehicle information and allowing
+       the user to make multiple requests without having to refresh your site. 
+5: Displays multiple pages about the vehicles information: 
+    1: Home 
+       - Nav Bar
+       - Welcome Header
+       - Displays the Home page with an input box for 'enter VIN'
+    2: Loading
+       - Displays 'Fetching Vehicle Information...' screen.
+    3: .../Results/#1 (consider using #id's for multiple VIN Searches stored? Compare two VINS?)
+       - Nav Bar
+       - Type of Information Header (ex MANUFACTURING INFORMATION)
+       - Information Displayed - related to the type of information in Header
+       - Expand at least one section at least one sub-category deeper in the API
+         (rerender's to display sub category information fetched from the state object)
+         (useEffect)
+       - Next and Previous buttons (using Routes and #Id params)
+       - Restart Search (clears state, Routes back to home page)
+    4: .../Results/#2 (Second page of information about the same vehicle)
+       - Nav Bar
+       - Type of Information Header (ex Vehicle Service History)
+       - Information Displayed - related to the type of information in Header
+       - Expand at least one section at least one sub-category deeper in the API (useEffect)
+         (rerender's to display sub category information fetched from the state object)
+         (useEffect)   
+       - Next and Previous buttons (using Routes and #Id params)
+       - Restart Search (clears state, Routes back to home page) 
+    5: .../Results/#3 (Or should it be .../results/#1/Page1... /#1/Page2... etc.)
+       - Nav Bar
+       - Type of Information Header (ex Vehicle Service History)
+       - Information Displayed - related to the type of information in Header
+       - Expand at least one section at least one sub-category deeper in the API (useEffect)
+         (rerender's to display sub category information fetched from the state object)
+         (useEffect)   
+       - Next and Previous buttons (using Routes and #Id params)
+       - Restart Search (clears state, Routes back to home page)
+6: Allows user to 'Start a new Search'
+   1: Resets the stored state (or saves this as searchResults[increment] = {vin})
+      increment would increase every time a NEW vin is searched for
+              
+API: NHTSA - national highway traffic safety admiinstration - https://vpic.nhtsa.dot.gov/api/
+     -Results: https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/5UXWX7C5*BA?format=json&modelyear=2011
+     -The Vehicle Information API takes in a VIN and returns information associated to the VIN. 
+     SerpAPI 
+     -Make a google image inquiry (${searchResults.year} ${searchResults.make} ${searchResults.model}) 
+      and receive an imageArray from the results you searched. 
+Idea:
+  Routes: (See Step 5 in Summary)
+  Components: 1: Home Page
+              2: Get Vehicle Button
+              3: Loading Page
+              4: Display Results Page
+              5: additional information component
+              6: Next Button
+              7: Previous Button
+              8: Start new Search Button
+Requirements:
+  useState: creating context to store the results of the fetch call to state. 
+  useEffect: Expand out one subategory deeper - update the rendered information from 
+               "Expand" or '\/' to 
+             {Expanded information about the vehicles subcategory}
+Image: Seperate API using searchResult.year, searchResult.make, and searchResult.model to 
+make a request to an image API with the params (${year} ${make} ${model}) to search for and 
+return 3 images relating to year, make, and model.

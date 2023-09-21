@@ -1,15 +1,44 @@
 import axios from "axios";
+import { VinContext } from "../../context/VinContext";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 const SearchVINButton = () => {
-    const handleClick = () => {
-        console.log('button was clicked!')
-        // use axios to get the information from the API using the provided VIN in the Home.js component input field.
-        // axios.get();
-    }
-    return (
-      <div>
-          <button onClick={handleClick}>Decode Your Vin!</button>
-      </div>
-    );
+  const { vin, dispatchVIN, vehicleData, loading } = useContext(VinContext);
+  const navigate = useNavigate();
+  const handleClick = () => {
+    const getVINfo = async () => {
+      navigate("/Loading");
+      console.log(loading);
+      const response = await axios
+        .get(
+          `https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVin/${vin}?format=json`
+        )
+        .then(function (response) {
+          let vehicleDataResponse = response.data;
+          dispatchVIN({
+            type: "update-vehicleData",
+            value: vehicleDataResponse,
+          });
+          dispatchVIN({
+            type: "set-loading-state",
+            value: false,
+          });
+          console.log("finished loading, navigated to page 1");
+          setTimeout(() => navigate("/Page1"), 5000);
+        })
+        .catch(function (e) {
+          if (e.response.status === 404) {
+            console.error("404 - Bad Request");
+          }
+        });
+    };
+    getVINfo();
   };
-  export default SearchVINButton;
-  
+
+  return (
+    <div>
+      <button onClick={handleClick}>Decode Your Vin!</button>
+    </div>
+  );
+};
+export default SearchVINButton;

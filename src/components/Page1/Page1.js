@@ -1,20 +1,51 @@
 import NextButton from "../NextButton/NextButton";
-import { useNavigate } from "react-router-dom";
-
+import { useContext } from "react";
+import { VinContext } from "../../context/VinContext";
 const Page1 = () => {
-  const navigate = useNavigate();  
-  return (
+  const { vehicleData, vin } = useContext(VinContext);
+  const vehicle = vehicleData.Results;
+  const isYear = async (data) => {
+    return data.Variable === "Model Year";
+  };
+  const isMake = (data) => {
+    return data.Variable === "Make";
+  };
+  const isModel = (data) => {
+    return data.Variable === "Model";
+  };
+  const isTrim = (data) => {
+    return data.Variable === "Trim";
+  };
+  const isBody = (data) => {
+    return data.Variable === "Body Class";
+  };
 
+  let year = vehicle.find(isYear);
+  // console.log(year);
+  let make = vehicle.find(isMake);
+  let model = vehicle.find(isModel);
+  let trim = vehicle.find(isTrim);
+  let body = vehicle.find(isBody);
+
+  return (
     <div>
       <h1>The results are in!</h1>
       <h2>Vehicle Specifications</h2>
       <div className="vehicle-information-card">
-        <p>VIN: {/*results.VIN*/}12345678910</p>
-        <p>Year: {/*results.ModelYear*/}1993</p>
-        <p>Make: {/*results.Make*/}Mazda</p>
-        <p>Model: {/*results.Model*/}Miata</p>
-        <p>Trim: {/*results.Trim*/}LE</p>
-        <p>Body: {/*results.BodyClass*/}Compact/Convertible</p>
+        <p>VIN: <b>{vin}</b></p>
+        {/* <p>Year: {year.Value}</p> */}
+        <p>
+          Make: <b>{make.Value}</b>
+        </p>
+        <p>
+          Model: <b>{model.Value}</b>
+        </p>
+        <p>
+          Trim: <b>{trim.Value}</b>
+        </p>
+        <p>
+          Body: <b>{body.Value}</b>
+        </p>
       </div>
       <NextButton />
     </div>

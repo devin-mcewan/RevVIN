@@ -8,10 +8,9 @@ const SearchVINButton = () => {
   const handleClick = () => {
     const getVINfo = async () => {
       navigate("/Loading");
-      console.log(loading);
       const response = await axios
         .get(
-          `https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVin/${vin}?format=json`
+          `https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVin/${vin}*BA?format=json`
         )
         .then(function (response) {
           let vehicleDataResponse = response.data;
@@ -23,7 +22,7 @@ const SearchVINButton = () => {
             type: "set-loading-state",
             value: false,
           });
-          console.log("finished loading, navigated to page 1");
+          console.log(vehicleData);
           setTimeout(() => navigate("/Page1"), 5000);
         })
         .catch(function (e) {

@@ -4,7 +4,7 @@ import { VinContext } from "../../context/VinContext";
 const Page1 = () => {
   const { vehicleData, vin } = useContext(VinContext);
   const vehicle = vehicleData.Results;
-  const isYear = async (data) => {
+  const isYear = (data) => {
     return data.Variable === "Model Year";
   };
   const isMake = (data) => {
@@ -21,7 +21,6 @@ const Page1 = () => {
   };
 
   let year = vehicle.find(isYear);
-  // console.log(year);
   let make = vehicle.find(isMake);
   let model = vehicle.find(isModel);
   let trim = vehicle.find(isTrim);
@@ -33,7 +32,7 @@ const Page1 = () => {
       <h2>Vehicle Specifications</h2>
       <div className="vehicle-information-card">
         <p>VIN: <b>{vin}</b></p>
-        {/* <p>Year: {year.Value}</p> */}
+        <p>Year: <b>{year.Value}</b></p>
         <p>
           Make: <b>{make.Value}</b>
         </p>

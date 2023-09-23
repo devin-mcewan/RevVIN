@@ -5,20 +5,20 @@ import { VinContext } from "../../context/VinContext";
 const Page2 = () => {
   const { vehicleData, vin } = useContext(VinContext);
   const vehicle = vehicleData.Results;
-  const isDisplacement = async (data) => {
-    return data.Variable === "DisplacementL";
+  const isDisplacement = (data) => {
+    return data.Variable === "Displacement (L)";
   };
   const isDriveType = (data) => {
-    return data.Variable === "DriveType";
+    return data.Variable === "Drive Type";
   };
   const isEngineHP = (data) => {
-    return data.Variable === "EngineHP";
+    return data.Variable === "Engine Brake (hp) From";
   };
   const isFuelType = (data) => {
-    return data.Variable === "Fuel Type Primary";
+    return data.Variable === "Fuel Type - Primary";
   };
   const isTransmission = (data) => {
-    return data.Variable === "TransmissionStyle";
+    return data.Variable === "Transmission Style";
   };
   const isTurbo = (data) => {
     return data.Variable === 'Turbo';
@@ -30,17 +30,19 @@ const Page2 = () => {
   let fuelType = vehicle.find(isFuelType);
   let transmission = vehicle.find(isTransmission);
   let turbo = vehicle.find(isTurbo);
+  console.log(vehicle);
+  console.log({displacement, driveType, hp, fuelType, transmission, turbo})
   return (
     <div>
       <h1>What's it equipped with?</h1>
       <h2>Vehicle Equipment</h2>
       <div className="vehicle-information-card">
-        <p>Displament(L): {displacement}</p>
-        <p>Drive Type: {driveType}</p>
-        <p>Horsepower: {hp}</p>
-        <p>Fuel Type: {fuelType}</p>
-        <p>Transmission: {transmission}</p>
-        <p>Turbo (Y/N): {turbo}</p>
+        <p>Displacment(L): <b>{displacement.Value}</b></p>
+        <p>Drive Type: <b>{driveType.Value}</b></p>
+        <p>Horsepower: <b>{hp.Value}</b></p>
+        <p>Fuel Type: <b>{fuelType.Value}</b></p>
+        <p>Transmission: <b>{transmission.Value}</b></p>
+        <p>Turbo (Y/N): <b>{turbo.Value}</b></p>
       </div>
       <PreviousButton />
       <NextButton />

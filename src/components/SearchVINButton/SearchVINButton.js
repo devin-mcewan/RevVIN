@@ -6,6 +6,10 @@ const SearchVINButton = () => {
   const { vin, dispatchVIN, vehicleData, loading } = useContext(VinContext);
   const navigate = useNavigate();
   const handleClick = () => {
+    dispatchVIN({
+      type: 'reset'
+    })
+    console.log('Cleared State')
     const getVINfo = async () => {
       navigate("/Loading");
       const response = await axios
@@ -19,11 +23,14 @@ const SearchVINButton = () => {
             value: vehicleDataResponse,
           });
           dispatchVIN({
+            type: "update-vin",
+            value: vin,
+          });
+          dispatchVIN({
             type: "set-loading-state",
             value: false,
           });
-          console.log(vehicleData);
-          setTimeout(() => navigate("/Page1"), 5000);
+          setTimeout(() => navigate("/Results/1"), 5000);
         })
         .catch(function (e) {
           if (e.response.status === 404) {

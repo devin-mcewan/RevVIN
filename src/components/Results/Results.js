@@ -8,10 +8,9 @@ import Page3 from "../Page3/Page3";
 
 const Results = () => {
   const { page } = useParams();
-  console.log(typeof page);
-
+  console.log ('current page value: ', page)
   return (
-    <div>
+    <div className="results">
       {page === '1' && <Page1 />}
       {page === '2' && <Page2 />}
       {page === '3' && <Page3 />}

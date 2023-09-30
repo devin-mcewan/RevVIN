@@ -11,13 +11,15 @@ const Home = () => {
     });
   };
   return (
-    <div>
+    <div className="home">
       {/* Edit this to be in context about revVIN */}
-      <h1>Welcome to the HOME Page</h1>
+      <h1>Welcome to the revVIN, your FREE vin decoder</h1>
       <div className="vin-input-area">
-        <label for="vin-input">Enter your VIN here: </label>
+        <label htmlFor="vin-input">Enter your VIN here: </label>
         <input type="text" name="vin-input" onChange={handleChange}></input>
-        <SearchVINButton/>
+        <div className="search-vin-button">
+          <SearchVINButton />
+        </div>
       </div>
     </div>
   );

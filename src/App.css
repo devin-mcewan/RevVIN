@@ -24,6 +24,7 @@
   color: white;
 }
 
+/* Nav Bar */
 nav {
   background-color: #282c34;
   color: white;
@@ -52,6 +53,172 @@ nav li {
 nav li:hover {
   background-color: #6e747f;
 }
+
+/* Page Headers */
+.results {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+.results h1 {
+  color: #454749;
+  font-weight: bolder;
+}
+
+/* Vehicle Information Card */
+
+.vehicle-information-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:  center;
+  width: auto;
+  margin: 5px;
+}
+
+.vehicle-information-card h2 {
+  color: #6c6c6d;
+  padding: 5px;
+}
+
+.text-box {
+  margin: 5px;
+  background-color: #5a5b5e;
+  border-radius: 10px;
+  color: white;
+  padding: 10px;
+}
+
+/* Navigating Buttons */
+
+.navigate-buttons-card {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px;
+  align-items: center;
+}
+
+.navigate-buttons-card button {
+  width: 150px;
+  height: 50px;
+  background-color: #282c34;
+  color: white;
+  font-family: fantasy;
+  font-size: 1.5em;
+  border-radius: 3px;
+}
+
+.navigate-buttons-card button:hover {
+  width: 145px;
+  height: 45px;
+  background-color:#777879;
+  color: white;
+  font-family: fantasy;
+  font-size: 1.5em;
+  border-radius: 5px;
+}
+
+/* Start Over Button Card */
+.start-over-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.start-over-card button{
+  width: 150px;
+  height: 50px;
+  background-color: #eb4b4b;
+  color: white;
+  font-family: fantasy;
+  font-size: 1.5em;
+  border-radius: 3px;
+}
+
+.start-over-card button:hover{
+  width: 145px;
+  height: 45px;
+  background-color:#ec1010;
+  color: white;
+  font-family: fantasy;
+  font-size: 1.5em;
+  border-radius: 5px;
+}
+
+/* About */
+.about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  padding-bottom: 20px;
+}
+
+.text-box-about {
+  width: 60%;
+  display: flex;
+  background-color: #5a5b5e;
+  color: white;
+  padding: 10px 20px;
+}
+
+.text-box-about a{
+  text-decoration: none;
+  font-weight: bold;
+  color: antiquewhite;
+}
+.text-box-about a:hover{
+  color:#61dafb;
+}
+
+/* Home */
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  padding-bottom: 20px;
+}
+
+.vin-input-area {
+  padding: 25px;
+  width: auto;
+}
+
+.vin-input-area label {
+  font-weight: bolder;
+  font-size: 2em;
+  font-family: monospace;
+}
+.vin-input-area input {
+ width: 450px;
+ height: 50px;
+ font-size: 35px;
+}
+/* Search Vin Button */
+.search-vin-button {
+  padding-top: 25px;
+}
+.search-vin-button button{
+  width: 250px;
+  height: 35px;
+  font-size: 1em;
+  font-weight: bold;
+  background-color: #2f332f;
+  color: white;
+  transition: 1s;
+}
+.search-vin-button button:hover{
+  width: 250px;
+  height: 35px;
+  font-size: 1em;
+  font-weight: bold;
+  background-color: #09ff00;
+  color: black;
+}
+
 .App-link {
   color: #61dafb;
 }

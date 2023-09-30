@@ -6,11 +6,11 @@ const PreviousButton = () => {
     const {page} = useParams();
   
     const handleClick = () => {
-      navigate(`/Results/${Number(page) - 1}`)
+      navigate(`/Results/${page - 1}`)
     };
     return (
       <div>
-        <button onClick={handleClick}>Previous</button>
+        <button onClick={() => handleClick()}>Previous</button>
       </div>
     );
 }

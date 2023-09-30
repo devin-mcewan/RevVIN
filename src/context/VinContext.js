@@ -5,11 +5,17 @@ const VinContext = createContext({
   vehicleData: [],
   dispatchVIN: () => {},
   loading: false,
+  year: "", 
+  make: "", 
+  model: "",
 });
 
 const initialVIN = {
   vin: "",
   vehicleData: [],
+  year: "", 
+  make: "", 
+  model: "",
 };
 
 const vinReducer = (state, action) => {
@@ -19,9 +25,11 @@ const vinReducer = (state, action) => {
     case "update-vehicleData":
       return { ...state, vehicleData: action.value};
     case "set-loading-state":
-      return {...state, loading: action.value}
+      return {...state, loading: action.value};
+    case "set-year-make-model":
+      return {...state, year: action.year, make: action.make, model: action.model};
     case "reset":
-      return { ...state, vin: "", vehicleData: [] };
+      return {...state, vin: "", vehicleData: [] };
     default:
       return state;
   }

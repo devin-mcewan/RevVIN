@@ -2,12 +2,7 @@ import PreviousButton from "../PreviousButton/PreviousButton";
 import axios from "axios";
 import { VinContext } from "../../context/VinContext";
 import { useContext } from "react";
-// const params = {
-//   engine: "google_images",
-//   q: `${year} ${make} ${model}`,
-//   location: "Austin, TX, Texas, United States"
-// };
-
+import StartOverButton from "../StartOverButton/StartOverButton";
 // const callback = function(data) {
 //   console.log(data);
 // };
@@ -16,40 +11,45 @@ import { useContext } from "react";
 // search.json(params, callback);
 
 
+
 const Page3 = () => {
-  const { vehicleData, vin } = useContext(VinContext);
+  const { vehicleData, vin, year, make, model } = useContext(VinContext);
   const vehicle = vehicleData.Results;
+  const SerpApi = require('google-search-results-nodejs')
+  const search = new SerpApi.GoogleSearch("398af66b924c17e411ae468d039ed6a22850b1e65860b8d64f5e1f97921d45c5");
+  const params = {
+    engine: 'google_images', 
+    google_domain: 'google.com', 
+    q: `${year} ${make} ${model}`
+  }
 
-  const isYear = (data) => {
-    return data.Variable === "Model Year";
-  };
-  const isMake = (data) => {
-    return data.Variable === "Make";
-  };
-  const isModel = (data) => {
-    return data.Variable === "Model";
-  };
+  const callback = function(data) {
+    console.log(data)
+  }
+  search.json(params,callback);
 
-  let year = vehicle.find(isYear);
-  let make = vehicle.find(isMake);
-  let model = vehicle.find(isModel);
-
-  const getImages = async () => {
-    // const response = await axios
-    //   .get(`https://serpapi.com/search?engine=google_images&q=${year}-${make}-${model}`)
-    //   .then(function (response) {
-    //     console.log(response);
-    //   });
-  };
-  getImages();
+  // const getImages = async () => {
+  //   const response = await axios
+  //     .get(`https://serpapi.com/search?engine=${params.engine}q=2019_Subaru_WRX`)
+  //     .then(function (response) {
+  //       console.log(response);
+  //     });
+  // };
+  // getImages();
 
   return (
     <div>
-      <h1>{`Showing Results for ${year} ${make} ${model}`}</h1>
+      <h1>{`Showing Google Image Search Results for ${year} ${make} ${model}`}</h1>
       <img src="" alt="Image 1"></img>
       <img src="" alt="Image 2"></img>
       <img src="" alt="Image 3"></img>
-      <PreviousButton />
+
+      <div className="navigate-buttons-card">
+        <PreviousButton />
+      </div>
+      <div className="start-over-card">
+        <StartOverButton />
+      </div>
     </div>
   );
 };

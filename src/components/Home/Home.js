@@ -14,6 +14,10 @@ const Home = () => {
 
   const inputExampleVin = () => {
     document.getElementById("vin-input").value = "WAUB4CF57MA016727";
+    dispatchVIN({
+      type: "update-vin",
+      value: "WAUB4CF57MA016727",
+    });
   };
 
   const clearVinInput = () => {

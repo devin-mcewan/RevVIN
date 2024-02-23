@@ -15,7 +15,7 @@ function App() {
         <h1>revVIN</h1>
         <ul>
           <li>
-            <Link to="/">HOME</Link>
+            <Link to="/RevVIN">HOME</Link>
           </li>
           <li>
             <Link to="/About">ABOUT</Link>
@@ -23,7 +23,7 @@ function App() {
         </ul>
       </nav>
       <Routes>
-        <Route path="/" element={<Home />}></Route>
+        <Route path="/RevVIN" element={<Home />}></Route>
         <Route path="/About" element={<About />}></Route>
         <Route path="/Results/:page" element={<Results />}></Route>
         <Route path="Loading" element={<Loading />}></Route>

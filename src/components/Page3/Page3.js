@@ -15,18 +15,10 @@ import StartOverButton from "../StartOverButton/StartOverButton";
 const Page3 = () => {
   const { vehicleData, vin, year, make, model } = useContext(VinContext);
   const vehicle = vehicleData.Results;
-  const SerpApi = require('google-search-results-nodejs')
-  const search = new SerpApi.GoogleSearch("398af66b924c17e411ae468d039ed6a22850b1e65860b8d64f5e1f97921d45c5");
-  const params = {
-    engine: 'google_images', 
-    google_domain: 'google.com', 
-    q: `${year} ${make} ${model}`
-  }
 
   const callback = function(data) {
     console.log(data)
   }
-  search.json(params,callback);
 
   // const getImages = async () => {
   //   const response = await axios

@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 const StartOverButton = () => {
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate(`/`);
+    navigate(`/RevVIN`);
   };
   return (
     <div>

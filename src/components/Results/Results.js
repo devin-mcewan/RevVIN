@@ -9,11 +9,14 @@ import Page3 from "../Page3/Page3";
 const Results = () => {
   const { page } = useParams();
   console.log ('current page value: ', page)
+  console.log('page typeof', typeof page);
+  let pageNumber = parseInt(page);
+  console.log('pageNumber', pageNumber);
   return (
     <div className="results">
-      {page === '1' && <Page1 />}
-      {page === '2' && <Page2 />}
-      {page === '3' && <Page3 />}
+      {pageNumber === 1 && <Page1 />}
+      {pageNumber === 2 && <Page2 />}
+      {pageNumber === 3 && <Page3 />}
     </div>
   );
 };

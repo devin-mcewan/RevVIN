@@ -22,7 +22,6 @@ function App() {
           </li>
         </ul>
       </nav>
-      <Home></Home>
       <Routes>
         <Route path="/RevVIN" element={<Home />}></Route>
         <Route path="/About" element={<About />}></Route>

@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/RevVIN/static/css/main.79698fb6.css",
-    "main.js": "/RevVIN/static/js/main.2eab3500.js",
+    "main.js": "/RevVIN/static/js/main.c683c41d.js",
     "static/js/787.4d1b9766.chunk.js": "/RevVIN/static/js/787.4d1b9766.chunk.js",
     "index.html": "/RevVIN/index.html",
     "main.79698fb6.css.map": "/RevVIN/static/css/main.79698fb6.css.map",
-    "main.2eab3500.js.map": "/RevVIN/static/js/main.2eab3500.js.map",
+    "main.c683c41d.js.map": "/RevVIN/static/js/main.c683c41d.js.map",
     "787.4d1b9766.chunk.js.map": "/RevVIN/static/js/787.4d1b9766.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.79698fb6.css",
-    "static/js/main.2eab3500.js"
+    "static/js/main.c683c41d.js"
   ]
 }
